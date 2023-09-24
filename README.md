@@ -21,8 +21,11 @@ Auto: Press the key that you set on the setup page, then split.
 
 Manual:
 Step 1. Freeze your cell.
+
 Step 2. Press one of the line buttons specified during setup (left, right, up, down lines).
+
 Step 3. SPLIT!
+
 <u>Do not move your mouse</u>
 
 ## Requirements
