@@ -9,9 +9,9 @@
 - Gota.io
 
 This extension is designed for Agar.io and Gota.io. It can also work with other Agar hosting services, although there is no official support. If you wish to use this extension on a different Agar hosting, you can add a line like this to match the URL:
-
-" // @match        https://example.com/* "
-
+```javascript
+// @match     https://example.com/*
+```
 
 ## How to Use
 
@@ -30,7 +30,7 @@ Step 3. SPLIT!
 To use the Agar.io Train Line Controller, you will need the following:
 
 1. [Tampermonkey](https://www.tampermonkey.net) - You can download it from [here](https://www.tampermonkey.net).
-2. Greasyfork (script link) - The script can be found [here](script_link).
+2. Greasyfork (script link) - The script can be found [here](https://greasyfork.org/scripts/370099-agar-io-train-line-controller).
 3. Jquery lib (optional)
 
 ## What's New
