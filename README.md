@@ -8,6 +8,11 @@
 - Agar.io
 - Gota.io
 
+This extension is designed for Agar.io and Gota.io. It can also work with other Agar hosting services, although there is no official support. If you wish to use this extension on a different Agar hosting, you can add a line like this to match the URL:
+
+" // @match        https://example.com/* "
+
+
 ## How to Use
 
 There are two options for using this plugin.
