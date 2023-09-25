@@ -28,7 +28,7 @@ Using this extension is straightforward. Here are the steps:
 This key is usually located just below the 'ESC' key and just above the 'Tab' key on most QWERTY keyboards.)
 
 - **Key Settings:**
-Once the menu is open, navigate to the "Setup" tab to customize your key settings. Here, you'll see a 3x3 grid of button configurations. Each button's position represents a specific direction. For example, the top-left button represents the left direction, and the bottom-right button represents the bottom-right direction. You can customize these buttons to improve your in-game control.
+Once the menu is open, navigate to the "Setup" tab to customize your key settings. Here, you'll see a 3x3 grid of button configurations. Each button's position represents a specific direction. For example, the top-left button represents the top-left direction, and the bottom-right button represents the bottom-right direction. You can customize these buttons to improve your in-game control.
 
 - **Line Mode:**
   The extension offers two different modes:
