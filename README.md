@@ -3,7 +3,7 @@
 
 ## What is This Extension?
 
-This extension is a specialized tool designed for Agar.io and Gota.io, popular online multiplayer games. It automates your controller experience by providing a controlled line-splitting feature. With this extension, you can quickly split your cell into lines, making it easier to navigate and conquer the game. It offers both manual and automatic splitting options.
+This extension is a specialized tool designed for Agar.io and Gota.io, popular online multiplayer games. It automates your controller experience by providing a controlled line-splitting feature. With this extension, you can quickly split your cell into lines.
 
 [Tutorial Video](https://www.youtube.com/watch?v=qevn6WdLfmg) (Old)
 
@@ -12,7 +12,7 @@ This extension is a specialized tool designed for Agar.io and Gota.io, popular o
 - Agar.io
 - Gota.io
 
-This extension is designed for Agar.io and Gota.io. It can also work with other Agar hosting services, although there is no official support. If you wish to use this extension on a different Agar hosting, you can add a line like this to match the URL:
+This extension is actually designed for Agar.io and Gota.io. It can also work with other Agar hosting services, although there is no official support. If you wish to use this extension on a different Agar hosting, you can add a line like this to match the URL:
 ```javascript
 // @match     https://example.com/*
 ```
