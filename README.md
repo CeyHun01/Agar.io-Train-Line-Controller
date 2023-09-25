@@ -1,6 +1,10 @@
 # Agar.io Train Line Controller
 ---
 
+## What is This Extension?
+
+This extension is a specialized tool designed for Agar.io and Gota.io, popular online multiplayer games. It automates your controller experience by providing a controlled line-splitting feature. With this extension, you can quickly split your cell into lines, making it easier to navigate and conquer the game. It offers both manual and automatic splitting options.
+
 [Tutorial Video](https://www.youtube.com/watch?v=qevn6WdLfmg) (Old)
 
 ## Supported Games
@@ -38,29 +42,22 @@ To use the Agar.io Train Line Controller, you will need the following:
 
 ## What's New
 
-- **Beta 1.0 - 2018-07-06**:
-  Initial Release
+- **1.7.0 - 16.09.2023**:
+  * Line mod first startup empty fixed
+  + New 4 Corner Diagonal Line Calculating
+  + Hotkey Keycode input support
+  + Setup Reset Button Added
+  + Theme Reset Button Added
+  + License Small Edit
+  + Jquery lib updated
+  * Button Delay is reduced
+  * Optimizations
+  - Some Game Support Removed
+  - Icon removed
 
-- **Beta 1.1 - 2018-07-12**:
-  Some fixes
-
-- **1.2 - 2018-07-16**:
-  Added F2 Press Diagonal Line Split (JustGota.io)
-
-- **1.3 - 2018-08-06**:
-  - Fixed bugs
-  - Added auto off ESC menu (Just Gota.io)
-  - Added Diagonal Lines (Impossible!!) [Press Insert, Press PageUp keys]
-
-- **1.4 - 2018-12-02**:
-  - Removed Jquery requirement
-  - Bug Fixed
-  - Added Backward Double Splits [Press "1" Key And "3" Key]
-  - Added Support for More Games
-
-- **1.5 - 2019-01-27**:
-  + F2 button developed [you will see more comfortable] (Just Gota.io)
-  + Optimization
+- **1.6.1 - 12.08.2019**:
+  Diagonal Lines Fixed
+  Line Mod First Select Fixed
 
 - **1.6 - 30.07.2019**:
   * Big Update! : Changed Support Games
@@ -74,19 +71,26 @@ To use the Agar.io Train Line Controller, you will need the following:
   + Added Jquery require
   + Bugs Fixed
 
-- **1.6.1 - 12.08.2019**:
-  Diagonal Lines Fixed
-  Line Mod First Select Fixed
+- **1.5 - 2019-01-27**:
+  + F2 button developed [you will see more comfortable] (Just Gota.io)
+  + Optimization
 
-- **1.7.0 - 16.09.2023**:
-  * Line mod first startup empty fixed
-  + New 4 Corner Diagonal Line Calculating
-  + Hotkey Keycode input support
-  + Setup Reset Button Added
-  + Theme Reset Button Added
-  + License Small Edit
-  + Jquery lib updated
-  * Button Delay is reduced
-  * Optimizations
-  - Some Game Support Removed
-  - Icon removed
+- **1.4 - 2018-12-02**:
+  - Removed Jquery requirement
+  - Bug Fixed
+  - Added Backward Double Splits [Press "1" Key And "3" Key]
+  - Added Support for More Games
+
+- **1.3 - 2018-08-06**:
+  - Fixed bugs
+  - Added auto off ESC menu (Just Gota.io)
+  - Added Diagonal Lines (Impossible!!) [Press Insert, Press PageUp keys]
+
+- **1.2 - 2018-07-16**:
+  Added F2 Press Diagonal Line Split (JustGota.io)
+
+- **Beta 1.1 - 2018-07-12**:
+  Some fixes
+
+- **Beta 1.0 - 2018-07-06**:
+  Initial Release
