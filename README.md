@@ -22,12 +22,14 @@ This extension is designed for Agar.io and Gota.io. It can also work with other 
 Using this extension is straightforward. Here are the steps:
 
 - **Accessing the Menu:**
-  After installing the extension and entering the game, you can open the custom menu by pressing the Backquote (\`) key. This menu enhances your in-game control.
+  After installing the extension and entering the game, you can open the custom menu by pressing the Backquote (`) (é) (") keys.
+
+  (On some keyboards, the Backquote key may be different, so it can be described as a key located just below the ESC key and just above the Tab key.)
 
 - **Key Settings:**
 Once the menu is open, navigate to the "Setup" tab to customize your key settings. Here, you'll see a 3x3 grid of button configurations. Each button's position represents a specific direction. For example, the top-left button represents the left direction, and the bottom-right button represents the bottom-right direction. You can customize these buttons to improve your in-game control.
 
-- **Line Mod:**
+- **Line Mode:**
   The extension offers two different modes:
 
    **Auto :** Split your cell automatically by pressing the key you've set.
