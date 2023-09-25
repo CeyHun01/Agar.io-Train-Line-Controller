@@ -24,7 +24,8 @@ Using this extension is straightforward. Here are the steps:
 - **Accessing the Menu:**
   After installing the extension and entering the game, you can open the custom menu by pressing the Backquote (`) (é) (") keys.
 
-  (On some keyboards, the Backquote key may be different, so it can be described as a key located just below the ESC key and just above the Tab key.)
+  (On some keyboards, the Backquote key may be different,
+This key is usually located just below the 'ESC' key and just above the 'Tab' key on most QWERTY keyboards.)
 
 - **Key Settings:**
 Once the menu is open, navigate to the "Setup" tab to customize your key settings. Here, you'll see a 3x3 grid of button configurations. Each button's position represents a specific direction. For example, the top-left button represents the left direction, and the bottom-right button represents the bottom-right direction. You can customize these buttons to improve your in-game control.
