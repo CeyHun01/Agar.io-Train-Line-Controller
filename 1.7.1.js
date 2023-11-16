@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Agar.io Train Line Controller
 // @namespace    https://www.youtube.com/channel/UCMf28IHMkAhEGv6wnU34mvw
-// @version      1.7.0
+// @version      1.7.1
 // @description  Script that allows you to make impossible lines and include custom configuration settings.
 // @author       CeyHun
 // @match        agar.io*
@@ -12,28 +12,28 @@
 // ==/UserScript==
 /*
 MIT License
- 
+
 Copyright (c)
- 
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
- 
+
 The above copyright notice and this permission notice (including the next paragraph)
 shall be included in all copies or substantial portions of the Software.
- 
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
 PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
 FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
- 
-alert('Train Line Controller ACTIVE!! \nPress  "~"  to open the control panel \n\n("backquote" key may differ with other keyboards)\n\nVERSION : 1.7.0\n\nGood Luck :D');
- 
+
+var alertMessage = 'Train Line Controller ACTIVE!! \nPress  "OK"  to open the control panel \n\nVERSION : 1.7.1\n\nGood Luck :D';
+
 //HTML Enabled.
 $("body").append ( `
 <div class="modal c" id="scrollbarr">
@@ -51,12 +51,15 @@ $("body").append ( `
   <h3 class="c-red c">How to use line</h3>
   <p>There are two options for this.</p>
   <p><b>Auto : </b>Press the key that you set on the setup page, then split.</p>
-   <p><b>Manual : </b>Step 1. Freeze your cell. Step 2. Press one of the line buttons specified during setup.(left,right,up,down lines) Step 3. SPLIT!
-   You can look at the old tutorial video </br><a class="c" href="https://youtu.be/qevn6WdLfmg" target="_blank">HERE</a></p>
+  <p><b>Manual :</b></p>
+  <p>Step 1. Freeze your cell.</p>
+  <p>Step 2. Press one of the line buttons specified during setup.(left,right,up,down lines)</p>
+  <p>Step 3. SPLIT!</p>
+  <p>You can look at the old tutorial video </br><a class="c" href="https://youtu.be/qevn6WdLfmg" target="_blank">HERE</a></p>
    <u>Do not move your mouse</u>
-   <p><b>NOTE :</b> The diagonal line has been assigned a coordinate value, which is attempted to be verified as much as possible.Real time,
-   correct proportion, browser used, changing physics engine in Game, Monitor size etc.
-   affects the items.That's hard to do.You have to constantly try to achieve this in the most erfect way.Going into the corner might be a bit more likely.Good luck!</p>
+   <p><b>NOTE :</b> The corner lines are assigned a square coordinate value that you should try to verify as much as possible.
+   this is often very difficult to do and you should constantly try to achieve it in the most perfect way.
+   Good luck!</p>
 </div>
 <div id="Theme" class="tabcont a c">
 <table>
@@ -70,54 +73,69 @@ $("body").append ( `
 </table>
 </div>
 <div id="Setup" class="tabcont a c">
-  <h3 class="a">Agar.io</h3>
+<b style="margin-left: 475px; position: relative; top: 22px;">Control Panel</b>
+<input class="selectt" id="control-panel" style="position: absolute; top: 47%; right: 50px;"></input>
+  <h3 class="a" style="margin-left: 2px;">Agar.io</h3>
   <b style="float:left">Line Mode : <select id="linemod">
   <option value="manual">Manual</option>
   <option value="auto">Auto</option>
   </select></b>
-  <table class="b">
+  <table class="b" style="margin: auto; margin-right: 14px;">
   <tr>
-  <th></th><th title="Click on the boxes and select the appropriate key.">Line Keys</th>
-  <th></th><th>Feature</th>
-  <th>Macro Keys</th>
+  <th></th><th></th><th title="Click on the boxes and select the appropriate key.">Line Keys</th>
   </tr>
   <tr>
+<td></td>
 <td><input class="selectt" id="freeze-topleft"></input></td>
 <td><input class="selectt" id="freeze-up"></input></td>
 <td><input class="selectt" id="freeze-topright"></input></td>
-<td><p>Feed Macro :</p></td>
-<td><input class="selectt" id="feed"></input></td>
 </tr>
-</br>
 <tr>
+<td></td>
 <td><input class="selectt" id="freeze-left"></input></td>
 <td><input class="selectt" id="freeze-middle"></input></td>
-<td><input class="selectt" id="freeze-right"></input</td>
-<td><p>Double Split :</p></td>
-<td><input class="selectt" id="double"></input></td>
+<td><input class="selectt" id="freeze-right"></input></td>
 </tr>
-</br>
 <tr>
+<td></td>
 <td><input class="selectt" id="freeze-bottomleft"></input></td>
 <td><input class="selectt" id="freeze-bottom"></input></td>
 <td><input class="selectt" id="freeze-bottomright"></input></td>
+</tr>
+<tr>
+<td colspan="2" style="padding: 10px 0;"></td>
+</tr>
+<tr>
+<td><td><b>Gota.io</b></td></td>
+<th></th><th>Feature</th>
+<th>Macro Keys</th>
+</tr>
+<tr>
+<td style="margin-right: 20px;">Diagonal Line :</td>
+<td><input class="selectt" id="diagonal"></input></td>
+<td></td>
+<td><p>Feed Macro :</p></td>
+<td><input class="selectt" id="feed"></input></td>
+</tr>
+<tr>
+<td style="margin-right: 20px;">Diagonal Line (16x) :</td>
+<td><input class="selectt" id="diagonalx16"></input></td>
+<td></td>
+<td><p>Double Split :</p></td>
+<td><input class="selectt" id="double"></input></td>
+</tr>
+<tr>
+<td><td><td></td></td></td>
 <td><p>Triple Split :</p></td>
 <td><input class="selectt" id="triple"></input></td>
 </tr>
 <tr>
-<td><td>&nbsp;<b>Gota.io</b></td></td>
-</tr>
-<tr>
-<td>Diagonal Line :</td>
-<td><input class="selectt" id="diagonal"></input></td>
-<td></td>
+<td><td><td></td></td></td>
 <td>Quad Split :</td>
 <td><input class="selectt" id="quad"></input></td>
 </tr>
 <tr>
-<td>Diagonal (16x):</td>
-<td><input class="selectt" id="diagonalx16"></input></td>
-<td></td>
+<td><td><td></td></td></td>
 <td>W Split (1x) :</td>
 <td><input class="selectt" id="wsplit"></input></td>
 </tr>
@@ -131,11 +149,8 @@ $("body").append ( `
 <td>Late Backward </br> Double Split :</td>
 <td><input class="selectt" id="ltbackward"></input></td>
 </tr>
-</tr>
 <tr>
-</tr>
-<tr>
-<td colspan="5" class="a">
+<td colspan="6" class="a">
 <button class="btns" id="resetSetup">Reset</button>
 </td>
 </table>
@@ -146,14 +161,27 @@ $("body").append ( `
 <a href="https://youtube.com/c/CeyHun1" target="_blank"><button class="yt-btn">YouTube</button></a>
 <p>Subscribe to my channel for support!</p>
 </br>
-<p class="c" style="color: grey;">SCRIPT VERSION : 1.7.0</p>
+<a href="https://github.com/CeyHun01/Agar.io-Train-Line-Controller" target="_blank">
+  <button style="
+    background-color: #24292e;
+    color: white;
+    padding: 4px 18px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #d1d5da;
+    font-family: Segoe UI, Helvetica, Arial, sans-serif, Segoe UI Emoji;
+    text-align: center;
+    cursor: pointer;
+  ">GitHub</button>
+</a>
+<p class="c" style="color: grey;">SCRIPT VERSION : 1.7.1</p>
 </div>
 </div>
 </div>
 <div id="backdrop" class="backdrop"></div>
 ` );
 //HTML Code End.
- 
+
 //CSS Enabled.
 GM_addStyle ( `\
 .modal {\
@@ -189,16 +217,16 @@ GM_addStyle ( `\
   cursor: pointer;\
   outline: none;\
 }\
- 
+
 .btns:last-child {\
   margin: 0;\
 }\
- 
+
 .btns:hover {\
   box-shadow: 0.4rem 0.4rem 0 black;\
   transform: translate(-0.4rem, -0.4rem);\
 }\
- 
+
 .btns:active {\
   box-shadow: 0 0 0 black;\
   transform: translate(0, 0);\
@@ -215,7 +243,7 @@ GM_addStyle ( `\
   font-size: 17px;\
   width: 25%;\
 }\
- 
+
 .tablink:hover {\
   background-color: #777;\
 }\
@@ -301,7 +329,7 @@ font-size: 18px;\
   border-radius: 0px;\
   background-color: #AAA;\
 }\
- 
+
 #scrollbarr::-webkit-scrollbar-button:hover {\
   background-color: #AAA;\
 }\
@@ -367,7 +395,7 @@ font-size: 18px;\
 }\
 ` );
 //CSS Code End.
- 
+
 //Keycodes mapping option
 var inputs = document.querySelectorAll('input.selectt');
 inputs.forEach(input => {
@@ -376,7 +404,7 @@ inputs.forEach(input => {
     event.preventDefault();
     let key = event.code;
     const keyCode = event.keyCode;
- 
+
       // Editing key names
     key = key.replace('Numpad', 'Numpad ');
     key = key.replace('Digit', '');
@@ -397,11 +425,11 @@ inputs.forEach(input => {
     key = key.replace('NumpadMultiply', '*');
     key = key.replace('NumpadDecimal', '.');
     key = key.replace('NumpadEqual', '=');
- 
+
     if (keyCode === 32) {
       key = 'Space';
     }
- 
+
     // Check if there is another key with the same input
     for (let otherInput of inputs) {
       if (otherInput !== input && otherInput.value === key) {
@@ -409,10 +437,10 @@ inputs.forEach(input => {
         return;
       }
     }
- 
+
     input.value = key;
     input.dataset.keyCode = keyCode;
- 
+
     // If the key is deleted, also delete the values in localStorage
     if (key === '') {
         localStorage.removeItem(id + '-value');
@@ -425,10 +453,10 @@ inputs.forEach(input => {
     }
   });
 });
- 
+
   var linemodSelect = document.getElementById("linemod");
   var linemod = localStorage.getItem("linemod");
- 
+
 //Input keycodes converting for switch-case, string to number
 let keyCodes = {};
 function convertKeyCodesToNumbers() {
@@ -437,13 +465,13 @@ function convertKeyCodesToNumbers() {
     const keyCode = input.dataset.keyCode;
   });
 }
- 
+
 function saveKeyBindings() {
     document.querySelectorAll('input.selectt').forEach(function(input) {
         localStorage.setItem(input.id, input.value);
     });
 }
- 
+
 function loadKeyBindings() {
   inputs.forEach(input => {
     const id = input.id;
@@ -453,7 +481,8 @@ function loadKeyBindings() {
     }
   });
 }
- 
+
+let isGota;
 window.onload = function() {
   var linemodSelect = document.getElementById("linemod");
   var linemod = localStorage.getItem("linemod");
@@ -468,20 +497,22 @@ window.onload = function() {
     const id = input.id;
     const savedValue = localStorage.getItem(id + '-value');
     const savedKeyCode = localStorage.getItem(id + '-keyCode');
- 
+
     if (savedValue) {
       input.value = savedValue;
     }
- 
+
     if (savedKeyCode) {
       input.dataset.keyCode = savedKeyCode;
       keyCodes[id] = Number(savedKeyCode);
     }
   });
   convertKeyCodesToNumbers();
+  startlistenmouse();
+  isGota = (window.location.host === "gota.io") ? true : false;
 };
 //Key Mapping End
- 
+
 //Theme,Keys,Listener Set Data
 let elements = {
     textcolor: ['.c', 'color'],
@@ -497,14 +528,14 @@ let defaultValues = {
     bordercolor: "#000000",
     textcolor: "#000000"
 };
- 
+
 if (linemodSelect) {
     linemodSelect.addEventListener('change', function() {
         linemod = this.value;
         localStorage.setItem("linemod", linemod);
     });
 }
- 
+
 for (let id in elements) {
     let [selector, style] = elements[id];
     let value = localStorage.getItem(id);
@@ -515,7 +546,7 @@ for (let id in elements) {
         });
         document.getElementById(id).value = value;
     }
- 
+
     document.getElementById(id).addEventListener('change', function() {
         let value = this.value;
         localStorage.setItem(id, value);
@@ -525,34 +556,35 @@ for (let id in elements) {
         });
     });
 }
- 
+
 inputs.forEach(function(input) {
     let id = input.id;
     let value = localStorage.getItem(id);
     if (value) {
         input.value = value;
     }
- 
+
     input.addEventListener('blur', function() {
         window.addEventListener('keydown', keydown ,false);
         window.addEventListener('keyup', keyup ,false);
         convertKeyCodesToNumbers();
         saveKeyBindings();
+        startlistenmouse();
     });
- 
+
     input.addEventListener('focus', function() {
         window.removeEventListener('keydown', keydown ,false);
         window.removeEventListener('keyup', keyup ,false);
     });
 });
- 
+
 document.querySelectorAll("#backdrop, .x").forEach(function(element) {
     element.addEventListener('click', function() {
         document.querySelector(".modal").style.display = "none";
         document.getElementById("backdrop").style.display = "none";
     });
 });
- 
+
 document.getElementById("resettheme").addEventListener('click', function() {
     for (let id in defaultValues) {
         let elem = document.getElementById(id);
@@ -560,7 +592,7 @@ document.getElementById("resettheme").addEventListener('click', function() {
             elem.value = defaultValues[id];
             localStorage.setItem(id, defaultValues[id]);
         }
- 
+
         let [selector, style] = elements[id];
         let value = defaultValues[id];
         let elems = document.querySelectorAll(selector);
@@ -580,33 +612,34 @@ document.getElementById('resetSetup').addEventListener('click', function() {
   });
         convertKeyCodesToNumbers();
         saveKeyBindings();
+        startlistenmouse();
 });
- 
+
 //Browser resolution variables
 var screenWidth, screenHeight, centerX, centerY, squareSize, halfSquareSize;
- 
+
 //Update the resolution variables when if first startup and/or browser size is changed
 function updateScreenSize() {
     screenWidth = window.innerWidth;
     screenHeight = window.innerHeight;
- 
+
     // Get Center of the screen
     centerX = screenWidth / 2;
     centerY = screenHeight / 2;
- 
+
     squareSize = Math.min(screenWidth, screenHeight);
     halfSquareSize = squareSize / 2;
 }
 //Browser resolution calculating end
- 
+
  //First startup needs setup
  updateScreenSize();
- 
+
  //Browser Resolution change listener
  window.addEventListener("resize", function() {
     updateScreenSize();
 });
- 
+
 document.openPage = function (pageName) {
   var i, tabcont;
   tabcont = document.getElementsByClassName("tabcont");
@@ -618,14 +651,13 @@ document.getElementById(pageName).style.display = "block";
 document.getElementById("firstPage").click();
 window.addEventListener('keydown', keydown ,false);
 window.addEventListener('keyup', keyup ,false);
- 
+
 var EjectDn = false;
 var wspeed = 10;
 function keydown(event) {
- var keys = event.keyCode;
- 
+var keys = event.keyCode;
  //Controls
-    switch (keys) {
+  switch (keys) {
   case keyCodes['freeze-middle']:
     X = window.innerWidth / 2;
     Y = window.innerHeight / 2;
@@ -671,43 +703,27 @@ function keydown(event) {
     Y = centerY + halfSquareSize;
     moveMouse(X, Y);
     break;
-  case keyCodes['double']:
-    X = window.innerWidth / 2;
-    Y = window.innerHeight / 3;
-    moveMouse(X, Y);
-    break;
-  case keyCodes['triple']:
-    X = window.innerWidth / 2;
-    Y = window.innerHeight / 3;
-    moveMouse(X, Y);
-    break;
-  case keyCodes['quad']:
-    X = window.innerWidth / 2;
-    Y = window.innerHeight / 3;
-    moveMouse(X, Y);
-    break;
-  case keyCodes['wsplit']:
-    X = window.innerWidth / 2;
-    Y = window.innerHeight / 3;
-    moveMouse(X, Y);
-    break;
   case keyCodes['diagonal']:
-    if (location.host == "gota.io" && document.getElementById("main").style.display == "none") {
-    split();
-    split();
-    split();
+    if (isGota && document.getElementById("main").style.display == "none") {
+    split(3);
     menu_off();
     block();
-    setTimeout(none, 1050);
-    setTimeout(menu_on, 1050);
+    setTimeout(() => {
+      none();
+      menu_on();
+    }, 1050);
     }
     break;
-  case keyCodes['backward']:
-    split();
-    center();
-    center();
-    center();
-    split();
+  case keyCodes['diagonalx16']:
+    if (isGota && document.getElementById("main").style.display == "none") {
+    split(4);
+    menu_off();
+    block();
+    setTimeout(() => {
+      none();
+      menu_on();
+    }, 1050);
+    }
     break;
   case keyCodes['feed']:
    if (EjectDn === false) {
@@ -715,30 +731,35 @@ function keydown(event) {
     setTimeout(eject, wspeed);
    }
     break;
-  case keyCodes['diagonalx16']:
-    if (location.host == "gota.io" && document.getElementById("main").style.display == "none") {
-     split();
-     split();
-     split();
-     split();
-     menu_off();
-     block();
-     setTimeout(none, 1050);
-     setTimeout(menu_on, 1050);
-    }
+  case keyCodes['double']:
+    split(2);
+    break;
+  case keyCodes['triple']:
+    split(3);
+    break;
+  case keyCodes['quad']:
+    split(4);
+    break;
+  case keyCodes['wsplit']:
+    ww();
+    setTimeout(split, 5);
+    break;
+  case keyCodes['backward']:
+    split(1);
+    reverseMouse();
+    split(1);
     break;
   case keyCodes['ltbackward']:
-     X = window.innerWidth / 2;
-     Y = window.innerHeight / 3;
-     moveMouse(X, Y);
+    split(2);
+    setTimeout(reverseMouse, 300);
     break;
-  case 192:
+  case keyCodes['control-panel']:
      $(".modal").show();
      $("#backdrop").show();
     break;
     }
 }
- 
+
 function moveMouse(X, Y) {
   if (linemod == "manual") {
     $("canvas").trigger($.Event("mousemove", {clientX: X, clientY: Y}));
@@ -750,7 +771,6 @@ function moveMouse(X, Y) {
     }, 570);
   }
 }
- 
     function none() {
     document.getElementById("main").style.display = "none"
 }
@@ -763,14 +783,38 @@ function moveMouse(X, Y) {
     function menu_off() {
     document.getElementById("main").style.zIndex = "-99"
 }
-    function center() { //routing the mouse event to the center
-    X = window.innerWidth / 2;
-    Y = window.innerHeight / 2;
-    $("canvas").trigger($.Event("mousemove", {clientX: X, clientY: Y}));
+
+var mouseX, mouseY;
+var isListening = false;
+
+function startlistenmouse() {
+    var ltbackward = localStorage.getItem("ltbackward");
+    var backward = localStorage.getItem("backward");
+    if ((ltbackward == "" || ltbackward == null || !ltbackward) && (backward == "" || backward == null || !backward)) {
+            return;
+    }
+    else if (!isListening){
+        isListening = true;
+    document.onmousemove = function(event) {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+    };
+    }
 }
-    function split() { //Space key listener the assigned number
+
+function reverseMouse() {
+  var reverseMouseX = centerX + (centerX - mouseX);
+  var reverseMouseY = centerY + (centerY - mouseY);
+
+  $("canvas").trigger($.Event("mousemove", {clientX: reverseMouseX, clientY: reverseMouseY}));
+}
+
+
+function split(repeat) {
+  for (let i = 0; i < repeat; i++) {
     $("body").trigger($.Event("keydown", { keyCode: 32}));
     $("body").trigger($.Event("keyup", { keyCode: 32}));
+  }
 }
     function esc() { //ESC key listener the assigned number
     $("body").trigger($.Event("keydown", { keyCode: 27}));
@@ -794,4 +838,19 @@ function moveMouse(X, Y) {
         setTimeout(eject, wspeed);
     }
 }
-    //Train Line Controller By CeyHun 1.7.0
+
+var controlPanelKey = localStorage.getItem('control-panel');
+
+if (controlPanelKey == "" || controlPanelKey == null || !controlPanelKey) {
+    var userResponse = confirm(alertMessage);
+    if (userResponse) {
+        $(".modal").show();
+        $("#backdrop").show();
+    }
+}
+else {
+    alertMessage = alertMessage.replace('OK', controlPanelKey);
+    alert(alertMessage);
+}
+
+    //Train Line Controller By CeyHun 1.7.1
