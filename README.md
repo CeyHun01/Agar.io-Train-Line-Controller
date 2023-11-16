@@ -21,11 +21,8 @@ This extension is actually designed for Agar.io and Gota.io. It can also work wi
 
 Using this extension is straightforward. Here are the steps:
 
-- **Accessing the Menu:**
-  After installing the extension and entering the game, you can open the custom menu by pressing the Backquote (`) (é) (") keys.
-
-  (On some keyboards, the Backquote key may be different,
-This key is usually located just below the 'ESC' key and just above the 'Tab' key on most QWERTY keyboards.)
+- **Accessing Setup Menu:**
+After installing the extension for the first time, you'll see a notification indicating that the extension is active. You can proceed to the menu setup by clicking the OK button in this notification. Additionally, if you wish to open the control panel with a key, you can assign one for that purpose.
 
 - **Key Settings:**
 Once the menu is open, navigate to the "Setup" tab to customize your key settings. Here, you'll see a 3x3 grid of button configurations. Each button's position represents a specific direction. For example, the top-left button represents the top-left direction, and the bottom-right button represents the bottom-right direction. You can customize these buttons to improve your in-game control.
@@ -51,6 +48,13 @@ To use the Agar.io Train Line Controller, you will need the following:
 3. Jquery lib (optional)
 
 ## What's New
+
+- **1.7.1 - 16.11.2023**:
+  - + New control panel opening sequence (No need for the backquote key anymore)
+  - * Menu design changes
+  - + New Backward Split Calculation and fixes
+  - * Macro optimizations
+  - * More reduction key delays
 
 - **1.7.0 - 16.09.2023**:
   * Line mod first startup empty fixed
