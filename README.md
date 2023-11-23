@@ -50,17 +50,17 @@ To use the Agar.io Train Line Controller, you will need the following:
 ## What's New
 
 - **1.7.2 - 22.09.2023:**
- * Fixed Line Mode "Auto" (missing function)
- + Added Input Delete key (now you can clear an input by pressing the Delete key in Setup Page)
- * Renamed KeyMap
- * Minor Fixes
+  * Fixed Line Mode "Auto" (missing function)
+  + Added Delete key for Hotkeys (now you can clear an input by pressing the Delete key in Setup Page)
+  * Renamed KeyMap
+  * Minor Fixes
 
 - **1.7.1 - 16.11.2023**:
- + New control panel opening sequence (No need for the backquote key anymore)
- * Menu design changes
- + New Backward Split Calculation and fixes
- * Macro optimizations
- * More reduction key delays
+  + New control panel opening sequence (No need for the backquote key anymore)
+  * Menu design changes
+  + New Backward Split Calculation and fixes
+  * Macro optimizations
+  * More reduction key delays
 
 - **1.7.0 - 16.09.2023**:
   * Line mod first startup empty fixed
@@ -76,8 +76,8 @@ To use the Agar.io Train Line Controller, you will need the following:
   - Icon removed
 
 - **1.6.1 - 12.08.2019**:
-  Diagonal Lines Fixed
-  Line Mod First Select Fixed
+  * Diagonal Lines Fixed
+  * Line Mod First Select Fixed
 
 - **1.6 - 30.07.2019**:
   * Big Update! : Changed Support Games
@@ -107,10 +107,10 @@ To use the Agar.io Train Line Controller, you will need the following:
   - Added Diagonal Lines (Impossible!!) [Press Insert, Press PageUp keys]
 
 - **1.2 - 2018-07-16**:
-  Added F2 Press Diagonal Line Split (JustGota.io)
+  + Added F2 Press Diagonal Line Split (Just Gota.io)
 
 - **Beta 1.1 - 2018-07-12**:
-  Some fixes
+  * Some fixes
 
 - **Beta 1.0 - 2018-07-06**:
-  Initial Release
+  * Initial Release
