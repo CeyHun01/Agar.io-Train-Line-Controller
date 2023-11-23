@@ -49,12 +49,18 @@ To use the Agar.io Train Line Controller, you will need the following:
 
 ## What's New
 
+- **1.7.2 - 22.09.2023:**
+  * Fixed Line Mode "Auto" (missing function)
+  + Added Input Delete key (now you can clear an input by pressing the Delete key in Setup Page)
+  * Renamed KeyMap
+  * Minor Fixes
+
 - **1.7.1 - 16.11.2023**:
-  - + New control panel opening sequence (No need for the backquote key anymore)
-  - * Menu design changes
-  - + New Backward Split Calculation and fixes
-  - * Macro optimizations
-  - * More reduction key delays
+ + New control panel opening sequence (No need for the backquote key anymore)
+ * Menu design changes
+ + New Backward Split Calculation and fixes
+ * Macro optimizations
+ * More reduction key delays
 
 - **1.7.0 - 16.09.2023**:
   * Line mod first startup empty fixed
