@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Agar.io Train Line Controller
 // @namespace    https://www.youtube.com/channel/UCMf28IHMkAhEGv6wnU34mvw
-// @version      1.7.1
+// @version      1.7.2
 // @description  Script that allows you to make impossible lines and include custom configuration settings.
 // @author       CeyHun
 // @match        agar.io*
@@ -32,7 +32,7 @@ FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TOR
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-var alertMessage = 'Train Line Controller ACTIVE!! \nPress  "OK"  to open the control panel \n\nVERSION : 1.7.1\n\nGood Luck :D';
+var alertMessage = 'Train Line Controller ACTIVE!! \nPress  "OK"  to open the control panel \n\nVERSION : 1.7.2\n\nGood Luck :D';
 
 //HTML Enabled.
 $("body").append ( `
@@ -174,7 +174,7 @@ $("body").append ( `
     cursor: pointer;
   ">GitHub</button>
 </a>
-<p class="c" style="color: grey;">SCRIPT VERSION : 1.7.1</p>
+<p class="c" style="color: grey;">SCRIPT VERSION : 1.7.2</p>
 </div>
 </div>
 </div>
@@ -398,6 +398,32 @@ font-size: 18px;\
 
 //Keycodes mapping option
 var inputs = document.querySelectorAll('input.selectt');
+var keyMap = {
+  'Numpad': 'Numpad ',
+  'Arrow': 'Arrow ',
+  'Digit': '',
+  'Key': '',
+  'Control': 'Ctrl',
+  'Escape': 'Esc',
+  'Minus': '-',
+  'Equal': '=',
+  'BracketLeft': '[',
+  'BracketRight': ']',
+  'Semicolon': ';',
+  'Quote': "'",
+  'Backquote': '`',
+  'Backslash': '\\',
+  'Comma': ',',
+  'Period': '.',
+  'Slash': '/',
+  'Numpad Multiply': 'Numpad *',
+  'Numpad Decimal': 'Numpad .',
+  'Numpad Subtract': 'Numpad -',
+  'Numpad Divide': 'Numpad /',
+  'Numpad Add': 'Numpad +',
+  'Numpad Equal': 'Numpad ='
+};
+
 inputs.forEach(input => {
   const id = input.id;
   input.addEventListener('keydown', event => {
@@ -405,26 +431,10 @@ inputs.forEach(input => {
     let key = event.code;
     const keyCode = event.keyCode;
 
-      // Editing key names
-    key = key.replace('Numpad', 'Numpad ');
-    key = key.replace('Digit', '');
-    key = key.replace('Key', '');
-    key = key.replace('Control', 'Ctrl');
-    key = key.replace('Escape', 'Esc');
-    key = key.replace('Minus', '-');
-    key = key.replace('Equal', '=');
-    key = key.replace('BracketLeft', '[');
-    key = key.replace('BracketRight', ']');
-    key = key.replace('Semicolon', ';');
-    key = key.replace('Quote', "'");
-    key = key.replace('Backquote', '`');
-    key = key.replace('Backslash', '\\');
-    key = key.replace('Comma', ',');
-    key = key.replace('Period', '.');
-    key = key.replace('Slash', '/');
-    key = key.replace('NumpadMultiply', '*');
-    key = key.replace('NumpadDecimal', '.');
-    key = key.replace('NumpadEqual', '=');
+    // Use the keyMap for replacements
+    for (let mapKey in keyMap) {
+      key = key.replace(new RegExp(mapKey, 'g'), keyMap[mapKey]);
+    }
 
     if (keyCode === 32) {
       key = 'Space';
@@ -450,6 +460,14 @@ inputs.forEach(input => {
         localStorage.setItem(id + '-value', key);
         localStorage.setItem(id + '-keyCode', keyCode);
         keyCodes[id] = keyCode;
+    }
+
+    if (event.key === 'Delete') {
+      event.preventDefault();
+      input.value = '';
+      localStorage.removeItem(input.id + '-value');
+      localStorage.removeItem(input.id + '-keyCode');
+      delete keyCodes[input.id];
     }
   });
 });
@@ -742,7 +760,7 @@ var keys = event.keyCode;
     break;
   case keyCodes['wsplit']:
     ww();
-    setTimeout(split, 5);
+    setTimeout(function() { split(1); }, 5);
     break;
   case keyCodes['backward']:
     split(1);
@@ -771,6 +789,13 @@ function moveMouse(X, Y) {
     }, 570);
   }
 }
+
+function center() {
+    X = window.innerWidth / 2;
+    Y = window.innerHeight / 2;
+    $("canvas").trigger($.Event("mousemove", {clientX: X, clientY: Y}));
+}
+
     function none() {
     document.getElementById("main").style.display = "none"
 }
@@ -809,23 +834,18 @@ function reverseMouse() {
   $("canvas").trigger($.Event("mousemove", {clientX: reverseMouseX, clientY: reverseMouseY}));
 }
 
-
 function split(repeat) {
   for (let i = 0; i < repeat; i++) {
     $("body").trigger($.Event("keydown", { keyCode: 32}));
     $("body").trigger($.Event("keyup", { keyCode: 32}));
   }
 }
-    function esc() { //ESC key listener the assigned number
-    $("body").trigger($.Event("keydown", { keyCode: 27}));
-    $("body").trigger($.Event("keyup", { keyCode: 27}));
-}
-    function ww() {
+function ww() {
     $("body").trigger($.Event("keydown", { keyCode: 87}));
     $("body").trigger($.Event("keyup", { keyCode: 87}));
 }
-    function keyup(event) {
-     var feeding = document.getElementById("feed"),
+function keyup(event) {
+  var feeding = document.getElementById("feed"),
      feed = feeding.value;
      if (event.keyCode == feed) {
      EjectDn = false;
@@ -853,4 +873,4 @@ else {
     alert(alertMessage);
 }
 
-    //Train Line Controller By CeyHun 1.7.1
+    //Train Line Controller By CeyHun 1.7.2
