@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Agar.io Train Line Controller
 // @namespace    https://www.youtube.com/channel/UCMf28IHMkAhEGv6wnU34mvw
-// @version      1.7.2
+// @version      1.7.3
 // @description  Script that allows you to make impossible lines and include custom configuration settings.
 // @author       CeyHun
 // @match        agar.io*
@@ -32,10 +32,10 @@ FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TOR
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-var alertMessage = 'Train Line Controller ACTIVE!! \nPress  "OK"  to open the control panel \n\nVERSION : 1.7.2\n\nGood Luck :D';
+var alertMessage = 'Train Line Controller ACTIVE!! \nPress  "OK"  to open the control panel \n\nVERSION : 1.7.3\n\nGood Luck :D';
 
 //HTML Enabled.
-$("body").append ( `
+let html = `
 <div class="modal c" id="scrollbarr">
 <div>
 <span class="x">x</span>
@@ -174,226 +174,200 @@ $("body").append ( `
     cursor: pointer;
   ">GitHub</button>
 </a>
-<p class="c" style="color: grey;">SCRIPT VERSION : 1.7.2</p>
+<p class="c" style="color: grey;">SCRIPT VERSION : 1.7.3</p>
 </div>
 </div>
 </div>
 <div id="backdrop" class="backdrop"></div>
-` );
+`;
+document.body.insertAdjacentHTML('beforeend', html);
 //HTML Code End.
 
 //CSS Enabled.
-GM_addStyle ( `\
-.modal {\
-  position: absolute;\
-  left: 50%;\
-  top: 50%;\
-  right: 50%;\
-  transform: translate(-50%, -50%);\
-  width: 680px;\
-  height: 435px;\
-  padding: 5px;\
-  padding-left: 30px;\
-  padding-right: 10px;\
-  display: none;\
-  flex-direction: column;\
-  align-items: center;\
-  border: 3px solid black;\
-  border-radius: 5px;\
-  background: white;\
-  margin: auto;\
-  overflow: auto;\
-  z-index: 999;\
-}\
-.btns {\
-  color:inherit;\
-  font-family: arial;\
-  font-size: 20px;\
-  background: white;\
-  padding: 1px 43px;\
-  border: 3px solid black;\
-  box-shadow: 0 0 0 black;\
-  transition: all 0.2s;\
-  cursor: pointer;\
-  outline: none;\
-}\
 
-.btns:last-child {\
-  margin: 0;\
-}\
+let styleElement = document.createElement('style');
+styleElement.type = 'text/css';
 
-.btns:hover {\
-  box-shadow: 0.4rem 0.4rem 0 black;\
-  transform: translate(-0.4rem, -0.4rem);\
-}\
+let css = `
+.btns,.modal {
+    background: #fff;
+    border: 3px solid #000
+}
 
-.btns:active {\
-  box-shadow: 0 0 0 black;\
-  transform: translate(0, 0);\
-}\
-\
-.tablink {\
-  background-color: #555;\
-  color: white;\
-  float: left;\
-  border: none;\
-  outline: none;\
-  cursor: pointer;\
-  padding: 14px 16px;\
-  font-size: 17px;\
-  width: 25%;\
-}\
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    right: 50%;
+    transform: translate(-50%,-50%);
+    width: 680px;
+    height: 435px;
+    padding: 5px 10px 5px 30px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    margin: auto;
+    overflow: auto;
+    z-index: 999
+}
 
-.tablink:hover {\
-  background-color: #777;\
-}\
-.tabcont {\
-  color: black;\
-  display: none;\
-  padding: 25px 20px;\
-  height: 100%;\
-}\
-.b {\
-  margin-left: 22px;\
-}\
-.x {\
-  float: right;\
-  font-family: sans-serif;\
-  font-size: 20px;\
-  cursor: pointer;\
-  z-index: 9;\
-}\
-.savebuton {\
-  background-color: green;\
-  border: solid 3px black;\
-  color: white;\
-  padding: 5px 20px;\
-  font-size: 16px;\
-  cursor: pointer;\
-}\
-  .title {\
-  text-align: center;\
-  font-family: arial;\
-  font-size: 35px;\
-}\
-.yt-btn {\
-  background-color: #cc181e;\
-  items-size:50px;\
-  color: white;\
-  padding: 4px 18px;\
-  font-size: 13px;\
-  border-radius: 1px;\
-  border:none;\
-  font: 12px ,Roboto,arial,sans-serif;\
-  text-align: center;\
-  cursor: pointer;\
-}\
-.a {\
-  text-align: center;\
-  font-family: arial;\
-}\
-.c-red {\
-  color:red;\
-}\
-.selectt {\
-  text-align: center;\
-  text-align-last: center;\
-  width: 90px;\
-  height: 50px;\
-  font-size: 15px;\
-  margin: 10px;\
-  border: 1px solid black;\
-  -webkit-appearance: none;\
-  -moz-appearance: none;\
-  -o-appearance: none;\
-}\
-.backdrop {\
-  position: fixed;\
-  top: 0;\
-  right: 0;\
-  bottom: 0;\
-  left: 0;\
-  background-color: black;\
-  opacity: 0.6;\
-  width: 100%;\
-  height: 100%;\
-  display: none;\
-  z-index: 998;\
-}\
-.selectt option {\
-font-size: 18px;\
-}\
-#scrollbarr::-webkit-scrollbar-button {\
-  display: none;\
-  height: 13px;\
-  border-radius: 0px;\
-  background-color: #AAA;\
-}\
+.btns {
+    color: inherit;
+    font-family: arial;
+    font-size: 20px;
+    padding: 1px 43px;
+    box-shadow: 0 0 0#000;
+    transition: all .2s;
+    cursor: pointer;
+    outline: 0
+}
 
-#scrollbarr::-webkit-scrollbar-button:hover {\
-  background-color: #AAA;\
-}\
-#scrollbarr::-webkit-scrollbar-thumb {\
-  background-color: #CCC;\
-  border-radius: 9px;\
-}\
-#scrollbarr::-webkit-scrollbar-thumb:hover {\
-  background-color: #CCC;\
-  border-radius: 9px;\
-}\
-#scrollbarr::-webkit-scrollbar-track {\
-  background-color: #efefef;\
-}\
-#scrollbarr::-webkit-scrollbar {\
-  width: 7px;\
-}\
-#scrollbarr::-moz-scrollbar-button {\
-  display: none;\
-  height: 13px;\
-  border-radius: 0px;\
-  background-color: #AAA;\
-}\
-#scrollbarr::-moz-scrollbar-button:hover {\
-  background-color: #AAA;\
-}\
-#scrollbarr::-moz-scrollbar-thumb {\
-  background-color: #CCC;\
-  border-radius: 9px;\
-}\
-#scrollbarr::-moz-scrollbar-thumb:hover {\
-  background-color: #CCC;\
-  border-radius: 9px;\
-}\
-#scrollbarr::-moz-scrollbar-track {\
-  background-color: #efefef;\
-}\
-#scrollbarr::-moz-scrollbar {\
-  width: 7px;\
-}\
-#scrollbarr::-o-scrollbar-button {\
-  display: none;\
-  height: 13px;\
-  border-radius: 0px;\
-  background-color: #AAA;\
-}\
-#scrollbarr::-o-scrollbar-button:hover {\
-  background-color: #AAA;\
-}\
-#scrollbarr::-o-scrollbar-thumb {\
-  background-color: #CCC;\
-  border-radius: 9px;\
-}\
-#scrollbarr::-o-scrollbar-thumb:hover {\
-  background-color: #CCC;\
-  border-radius: 9px;\
-}\
-#scrollbarr::-o-scrollbar-track {\
-  background-color: #efefef;\
-}\
-#scrollbarr::-o-scrollbar {\
-  width: 7px;\
-}\
-` );
+.btns:last-child {
+    margin: 0
+}
+
+.btns:hover {
+    box-shadow: .4rem .4rem 0#000;
+    transform: translate(-.4rem,-.4rem)
+}
+
+.btns:active {
+    box-shadow: 0 0 0#000;
+    transform: translate(0,0)
+}
+
+.tablink {
+    background-color: #555;
+    color: #fff;
+    float: left;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%
+}
+
+.tablink:hover {
+    background-color: #777
+}
+
+.tabcont {
+    color: #000;
+    display: none;
+    padding: 25px 20px;
+    height: 100%
+}
+
+.b {
+    margin-left: 22px
+}
+
+.x {
+    float: right;
+    font-family: sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 9
+}
+
+.savebuton {
+    background-color: green;
+    border: solid 3px #000;
+    color: #fff;
+    padding: 5px 20px;
+    font-size: 16px;
+    cursor: pointer
+}
+
+.title {
+    font-family: arial;
+    font-size: 35px
+}
+
+.a,.title,.yt-btn {
+    text-align: center
+}
+
+.yt-btn {
+    background-color: #cc181e;
+    items-size: 50px;
+    color: #fff;
+    padding: 4px 18px;
+    border-radius: 1px;
+    border: 0;
+    font: 12px,Roboto,arial,sans-serif;
+    cursor: pointer
+}
+
+.a {
+    font-family: arial
+}
+
+.c-red {
+    color: red
+}
+
+.selectt {
+    text-align: center;
+    text-align-last: center;
+    width: 90px;
+    height: 50px;
+    font-size: 15px;
+    margin: 10px;
+    border: 1px solid #000;
+    appearance: none
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: .6;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 998
+}
+
+.selectt option {
+    font-size: 18px
+}
+#scrollbarr::-webkit-scrollbar-button {
+    display: none;
+    height: 13px;
+    border-radius: 0;
+    background-color: #aaa
+}
+
+#scrollbarr::-webkit-scrollbar-button:hover {
+    background-color: #aaa
+}
+
+#scrollbarr::-webkit-scrollbar-thumb,#scrollbarr::-webkit-scrollbar-thumb:hover {
+    background-color: #ccc;
+    border-radius: 9px
+}
+
+#scrollbarr::-webkit-scrollbar-track {
+    background-color: #efefef
+}
+
+#scrollbarr::-webkit-scrollbar {
+    width: 7px
+}
+`;
+if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css;
+} else {
+    styleElement.appendChild(document.createTextNode(css));
+}
+document.getElementsByTagName('head')[0].appendChild(styleElement);
+
 //CSS Code End.
 
 //Keycodes mapping option
@@ -677,49 +651,31 @@ var keys = event.keyCode;
  //Controls
   switch (keys) {
   case keyCodes['freeze-middle']:
-    X = window.innerWidth / 2;
-    Y = window.innerHeight / 2;
-    moveMouse(X, Y);
+    center();
     break;
   case keyCodes['freeze-left']:
-    X = window.innerWidth / 3;
-    Y = window.innerHeight / 2;
-    moveMouse(X, Y);
+    moveMouse(window.innerWidth / 3, window.innerHeight / 2);
     break;
   case keyCodes['freeze-right']:
-    X = window.innerWidth / 1;
-    Y = window.innerHeight / 2;
-    moveMouse(X, Y);
+    moveMouse(window.innerWidth / 1, window.innerHeight / 2);
     break;
   case keyCodes['freeze-bottom']:
-    X = window.innerWidth / 2;
-    Y = window.innerHeight / 1;
-    moveMouse(X, Y);
+    moveMouse(window.innerWidth / 2, window.innerHeight / 1);
     break;
   case keyCodes['freeze-up']:
-    X = window.innerWidth / 2;
-    Y = window.innerHeight / 3;
-    moveMouse(X, Y);
+    moveMouse(window.innerWidth / 2, window.innerHeight / 3);
     break;
   case keyCodes['freeze-topleft']:
-    X = centerX - halfSquareSize;
-    Y = centerY - halfSquareSize;
-    moveMouse(X, Y);
+    moveMouse(centerX - halfSquareSize, centerY - halfSquareSize);
     break;
   case keyCodes['freeze-topright']:
-    X = centerX + halfSquareSize;
-    Y = centerY - halfSquareSize;
-    moveMouse(X, Y);
+    moveMouse(centerX + halfSquareSize, centerY - halfSquareSize);
     break;
   case keyCodes['freeze-bottomright']:
-    X = centerX + halfSquareSize;
-    Y = centerY + halfSquareSize;
-    moveMouse(X, Y);
+    moveMouse(centerX + halfSquareSize, centerY + halfSquareSize);
     break;
   case keyCodes['freeze-bottomleft']:
-    X = centerX - halfSquareSize;
-    Y = centerY + halfSquareSize;
-    moveMouse(X, Y);
+    moveMouse(centerX - halfSquareSize, centerY + halfSquareSize);
     break;
   case keyCodes['diagonal']:
     if (isGota && document.getElementById("main").style.display == "none") {
@@ -772,8 +728,7 @@ var keys = event.keyCode;
     setTimeout(reverseMouse, 300);
     break;
   case keyCodes['control-panel']:
-     $(".modal").show();
-     $("#backdrop").show();
+    modalshow();
     break;
     }
 }
@@ -830,19 +785,19 @@ function startlistenmouse() {
 function reverseMouse() {
   var reverseMouseX = centerX + (centerX - mouseX);
   var reverseMouseY = centerY + (centerY - mouseY);
-
   $("canvas").trigger($.Event("mousemove", {clientX: reverseMouseX, clientY: reverseMouseY}));
 }
 
 function split(repeat) {
   for (let i = 0; i < repeat; i++) {
-    $("body").trigger($.Event("keydown", { keyCode: 32}));
-    $("body").trigger($.Event("keyup", { keyCode: 32}));
+    window.onkeydown({keyCode: 32});
+    window.onkeyup({keyCode: 32});
   }
 }
+
 function ww() {
-    $("body").trigger($.Event("keydown", { keyCode: 87}));
-    $("body").trigger($.Event("keyup", { keyCode: 87}));
+    window.onkeydown({keyCode: 87});
+    window.onkeyup({keyCode: 87});
 }
 function keyup(event) {
   var feeding = document.getElementById("feed"),
@@ -853,10 +808,14 @@ function keyup(event) {
 }
     function eject() {
     if (EjectDn) {
-    $("body").trigger($.Event("keydown", { keyCode: 87}));
-    $("body").trigger($.Event("keyup", { keyCode: 87}));
+        window.onkeydown({keyCode: 87});
+        window.onkeyup({keyCode: 87});
         setTimeout(eject, wspeed);
     }
+}
+    function modalshow() {
+    document.querySelector(".modal").style.display = "block";
+    document.querySelector("#backdrop").style.display = "block";
 }
 
 var controlPanelKey = localStorage.getItem('control-panel');
@@ -864,8 +823,7 @@ var controlPanelKey = localStorage.getItem('control-panel');
 if (controlPanelKey == "" || controlPanelKey == null || !controlPanelKey) {
     var userResponse = confirm(alertMessage);
     if (userResponse) {
-        $(".modal").show();
-        $("#backdrop").show();
+        modalshow();
     }
 }
 else {
@@ -873,4 +831,4 @@ else {
     alert(alertMessage);
 }
 
-    //Train Line Controller By CeyHun 1.7.2
+    //Train Line Controller By CeyHun 1.7.3
