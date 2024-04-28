@@ -48,8 +48,16 @@ To use the Agar.io Train Line Controller, you will need the following:
 3. Jquery lib (optional)
 
 ## What's New
+- **1.7.3 - 28.04.2024:**:
+  * HTML add method changed
+  * CSS add method changed
+  * CSS small minifying
+  - old browser CSS elements removed
+  * Controls freeze middle function changed and unused variables removed
+  * Modal function merged
+  * Split and Mass keypress method changed
 
-- **1.7.2 - 22.09.2023:**
+- **1.7.2 - 22.11.2023**:
   * Fixed Line Mode "Auto" (missing function)
   + Added Delete key for Hotkeys (now you can clear an input by pressing the Delete key in Setup Page)
   * Renamed KeyMap
